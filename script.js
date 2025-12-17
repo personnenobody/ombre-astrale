@@ -3,7 +3,10 @@ let SOMMAIRE = {};
 async function loadPage(path) {
   const res = await fetch("data/" + path);
   if (!res.ok) {
-    document.getElementById("content").innerHTML =
+  const content = document.getElementById("content");
+content.innerHTML = html;
+setupAetherionToggle();
+
       "<p>Archive introuvable.</p>";
     return;
   }
@@ -53,12 +56,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupSearch();
   loadPage("accueil.html");
 });
-const btn = document.getElementById("toggle-aetherion");
-const shortText = document.getElementById("aetherion-short");
-const longText = document.getElementById("aetherion-long");
 
-if (btn && shortText && longText) {
-  btn.addEventListener("click", () => {
+function setupAetherionToggle() {
+  const btn = document.getElementById("toggle-aetherion");
+  const shortText = document.getElementById("aetherion-short");
+  const longText = document.getElementById("aetherion-long");
+
+  if (!btn || !shortText || !longText) return;
+
+  btn.onclick = () => {
     const isShortVisible = !shortText.classList.contains("hidden");
 
     if (isShortVisible) {
@@ -70,5 +76,5 @@ if (btn && shortText && longText) {
       shortText.classList.remove("hidden");
       btn.textContent = "📂 Dossier détaillé";
     }
-  });
+  };
 }
