@@ -1,0 +1,11 @@
+{
+  "Personnages": {
+    "Shin": "personnages/shin.md"
+  },
+  "Artefacts": {
+    "Aetherion": "artefacts/aetherion.md"
+  },
+  "Vaisseaux": {
+    "Névalis": "vaisseaux/nevalis.md"
+  }
+}
