@@ -7,8 +7,8 @@ async function loadPage(path) {
       "<p>Archive introuvable.</p>";
     return;
   }
-  const text = await res.text();
-  document.getElementById("content").innerHTML = marked.parse(text);
+  const html = await res.text();
+  document.getElementById("content").innerHTML = html;
 }
 
 async function loadMenu() {
@@ -22,8 +22,8 @@ async function loadMenu() {
     const btn = document.createElement("button");
     btn.textContent = category;
     btn.onclick = () => {
-      const firstPage = Object.values(SOMMAIRE[category])[0];
-      loadPage(firstPage);
+      const first = Object.values(SOMMAIRE[category])[0];
+      loadPage(first);
     };
     nav.appendChild(btn);
   }
@@ -51,5 +51,5 @@ function setupSearch() {
 document.addEventListener("DOMContentLoaded", async () => {
   await loadMenu();
   setupSearch();
-  loadPage("accueil.md");
+  loadPage("accueil.html");
 });
