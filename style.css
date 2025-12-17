@@ -64,3 +64,6 @@ main {
 .article p {
   margin-bottom: 16px;
 }
+.hidden {
+  display: none;
+}
