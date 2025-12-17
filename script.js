@@ -1,63 +1,5 @@
-let SOMMAIRE = {};
-
-async function loadPage(path) {
-  const res = await fetch("data/" + path);
-  const content = document.getElementById("content");
-
-  if (!res.ok) {
-    content.innerHTML = "<p>Archive introuvable.</p>";
-    return;
-  }
-
-  const html = await res.text();
-  content.innerHTML = html;
-
-  // Active les boutons APRÈS chargement du contenu
+document.addEventListener("DOMContentLoaded", () => {
   setupAetherionToggle();
-}
-
-
-async function loadMenu() {
-  const res = await fetch("data/sommaire.json");
-  SOMMAIRE = await res.json();
-
-  const nav = document.querySelector("nav");
-  nav.innerHTML = "";
-
-  for (const category in SOMMAIRE) {
-    const btn = document.createElement("button");
-    btn.textContent = category;
-    btn.onclick = () => {
-      const first = Object.values(SOMMAIRE[category])[0];
-      loadPage(first);
-    };
-    nav.appendChild(btn);
-  }
-}
-
-function setupSearch() {
-  const input = document.getElementById("search");
-  if (!input) return;
-
-  input.addEventListener("input", () => {
-    const value = input.value.toLowerCase().trim();
-    if (value.length < 2) return;
-
-    for (const category in SOMMAIRE) {
-      for (const title in SOMMAIRE[category]) {
-        if (title.toLowerCase().includes(value)) {
-          loadPage(SOMMAIRE[category][title]);
-          return;
-        }
-      }
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadMenu();
-  setupSearch();
-  loadPage("accueil.html");
 });
 
 function setupAetherionToggle() {
@@ -77,7 +19,7 @@ function setupAetherionToggle() {
     } else {
       longText.classList.add("hidden");
       shortText.classList.remove("hidden");
-      btn.textContent = "📂 Dossier détaillé";
+      btn.textContent = "📂 Accéder au dossier complet";
     }
   };
 }
