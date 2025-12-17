@@ -2,16 +2,18 @@ let SOMMAIRE = {};
 
 async function loadPage(path) {
   const res = await fetch("data/" + path);
-  if (!res.ok) {
   const content = document.getElementById("content");
-content.innerHTML = html;
-setupAetherionToggle();
 
-      "<p>Archive introuvable.</p>";
+  if (!res.ok) {
+    content.innerHTML = "<p>Archive introuvable.</p>";
     return;
   }
+
   const html = await res.text();
-  document.getElementById("content").innerHTML = html;
+  content.innerHTML = html;
+
+  // IMPORTANT : on branche les boutons APRÈS l’injection HTML
+  setupAetherionToggle();
 }
 
 async function loadMenu() {
