@@ -12,9 +12,10 @@ async function loadPage(path) {
   const html = await res.text();
   content.innerHTML = html;
 
-  // IMPORTANT : on branche les boutons APRÈS l’injection HTML
+  // Active les boutons APRÈS chargement du contenu
   setupAetherionToggle();
 }
+
 
 async function loadMenu() {
   const res = await fetch("data/sommaire.json");
