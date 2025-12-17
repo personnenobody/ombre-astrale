@@ -42,3 +42,25 @@ main {
   padding: 30px;
   line-height: 1.6;
 }
+/* Conteneur principal des articles */
+.article {
+  max-width: 800px;      /* largeur idéale pour lire */
+  margin: 40px auto;     /* centré horizontalement */
+  padding: 0 20px;       /* espace sur les côtés */
+  line-height: 1.7;      /* respiration du texte */
+}
+
+/* Titres de sections */
+.article h3 {
+  margin-top: 40px;
+}
+
+/* Sous-sections (armes, formes, etc.) */
+.article h4 {
+  margin-top: 25px;
+}
+
+/* Paragraphes */
+.article p {
+  margin-bottom: 16px;
+}
